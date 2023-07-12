@@ -29,4 +29,4 @@ runs:
 
       echo ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}
 
-      ./${{ inputs.binary-name }} login --request_token=${ACTIONS_ID_TOKEN_REQUEST_TOKEN} --request_token_url=${ACTIONS_ID_TOKEN_REQUEST_URL} 
+      ./${{ inputs.binary-name }} login --server=app.uffizzi.com --username=gopalnambiar2@gmail.com
