@@ -21,8 +21,8 @@ runs:
     # Check if the input variable `action` is create
     run: |
       export UFFIZZI_SERVER=app.uffizzi.com
-      # export REQUEST_TOKEN=${ACTIONS_ID_TOKEN_REQUEST_TOKEN}
-      # export REQUEST_TOKEN_URL=${ACTIONS_ID_TOKEN_REQUEST_URL}
+      export REQUEST_TOKEN=${ACTIONS_ID_TOKEN_REQUEST_TOKEN}
+      export REQUEST_TOKEN_URL=${ACTIONS_ID_TOKEN_REQUEST_URL}
 
       wget https://github.com/UffizziCloud/uffizzi_cli/releases/download/${{ inputs.release-tag }}/${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
@@ -34,7 +34,7 @@ runs:
 
       # echo ${REQUEST_TOKEN_URL}
       # OIDC_TOKEN=$(curl -sLS ${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=uffizzi -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}")
-      OIDC_TOKEN=$(curl -sLS "${ACTIONS_ID_TOKEN_REQUEST_URL}"&audience=uffizzi -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}")
+      OIDC_TOKEN=$(curl -sLS "$REQUEST_TOKEN_URL&audience=uffizzi" -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $REQUEST_TOKEN")
 
 
       ./${{ inputs.binary-name }} login_by_identity_token --token ${OIDC_TOKEN} --access-token ${ACCESS_TOKEN} --server=app.uffizzi.com 
