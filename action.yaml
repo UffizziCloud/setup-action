@@ -27,7 +27,6 @@ runs:
       wget https://github.com/UffizziCloud/uffizzi_cli/releases/download/${{ inputs.release-tag }}/${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
 
-      echo $REQUEST_TOKEN
-      echo $REQUEST_TOKEN_URL
+      echo ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}
 
-      ./${{ inputs.binary-name }} --request_token=${ACTIONS_ID_TOKEN_REQUEST_TOKEN} --request_token_url=${ACTIONS_ID_TOKEN_REQUEST_URL}  login
+      ./${{ inputs.binary-name }} login --request_token=${ACTIONS_ID_TOKEN_REQUEST_TOKEN} --request_token_url=${ACTIONS_ID_TOKEN_REQUEST_URL} 
