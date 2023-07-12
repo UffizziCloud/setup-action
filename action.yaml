@@ -1,0 +1,25 @@
+name: 'Setup Uffizzi CLI Binaries'
+description: 'k8s cluster Preview Environments for every pull request. Supports APIs, frontends, backends, databases, and microservices.'
+author: 'Gopal Nambiar'
+branding:
+  color: 'yellow'
+  icon: 'upload-cloud'
+inputs:
+  release-tag:
+    description: 'Tag for the CLI release'
+    required: true
+    default: 'v'
+  binary-name: 
+    description: 'Name of the CLI binary'
+    required: true
+    default: 'uffizzi-linux-x64-TEST-1'
+
+runs:
+  using: 'composite'
+  steps:
+  - shell: bash
+    # Check if the input variable `action` is create
+    run: |
+      wget https://github.com/UffizziCloud/uffizzi_cli/releases/tag/${{ inputs.release-tag }}/${{ inputs.binary-name }}
+      chmod +x ${{ inputs.binary-name }}
+      ./${{ inputs.binary-name }} login
