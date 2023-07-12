@@ -20,6 +20,6 @@ runs:
   - shell: bash
     # Check if the input variable `action` is create
     run: |
-      wget https://github.com/UffizziCloud/uffizzi_cli/releases/tag/${{ inputs.release-tag }}/${{ inputs.binary-name }}
+      wget https://github.com/UffizziCloud/uffizzi_cli/releases/download/${{ inputs.release-tag }}/${{ inputs.binary-name }}
       chmod +x ${{ inputs.binary-name }}
       ./${{ inputs.binary-name }} login
