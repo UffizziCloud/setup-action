@@ -33,3 +33,4 @@ runs:
       ./${{ inputs.binary-name }} config set REQUEST_TOKEN_URL ${ACTIONS_ID_TOKEN_REQUEST_URL}
 
       ./${{ inputs.binary-name }} login --server=app.uffizzi.com 
+      
