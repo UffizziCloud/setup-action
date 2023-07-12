@@ -32,7 +32,11 @@ runs:
       # ./${{ inputs.binary-name }} config set REQUEST_TOKEN ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}
       # ./${{ inputs.binary-name }} config set REQUEST_TOKEN_URL ${ACTIONS_ID_TOKEN_REQUEST_URL}
 
-      # echo ${REQUEST_TOKEN_URL}
+      echo "abc"
+      echo $REQUEST_TOKEN_URL
+      echo $REQUEST_TOKEN
+      echo "def"
+
       # OIDC_TOKEN=$(curl -sLS ${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=uffizzi -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}")
       OIDC_TOKEN=$(curl -sLS "$REQUEST_TOKEN_URL&audience=uffizzi" -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $REQUEST_TOKEN")
 
