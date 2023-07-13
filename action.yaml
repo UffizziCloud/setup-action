@@ -8,31 +8,19 @@ inputs:
   release-tag:
     description: 'Tag for the CLI release'
     required: true
-    default: 'v'
+    default: 'TEST-6'
   binary-name: 
     description: 'Name of the CLI binary'
     required: true
-    default: 'uffizzi-linux-x64-TEST-1'
-  server:
-    description: 'Uffizzi Server URL'
-    required: true
-    default: 'https://app.uffizzi.com'
+    default: 'uffizzi-linux-x86_64-TEST-6'
 
 runs:
   using: 'composite'
   steps:
   - shell: bash
     run: |
-      export UFFIZZI_SERVER=${{ inputs.server }}
-      export REQUEST_TOKEN=${ACTIONS_ID_TOKEN_REQUEST_TOKEN}
-      export REQUEST_TOKEN_URL=${ACTIONS_ID_TOKEN_REQUEST_URL}
-
       wget https://github.com/UffizziCloud/uffizzi_cli/releases/download/${{ inputs.release-tag }}/${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
-
-      OIDC_TOKEN=$(curl -sLS "${REQUEST_TOKEN_URL}&audience=uffizzi" -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $REQUEST_TOKEN")
-      ./${{ inputs.binary-name }} login_by_identity_token --token "${OIDC_TOKEN}" --server "${UFFIZZI_SERVER}"
-
   - name: Export the binary
     uses: actions/upload-artifact@v3
     with:
