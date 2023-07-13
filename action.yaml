@@ -27,5 +27,7 @@ runs:
       wget https://github.com/UffizziCloud/uffizzi_cli/releases/download/${{ inputs.release-tag }}/${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
 
+      ./${{ inputs.binary-name }} config set project default
+
       OIDC_TOKEN=$(curl -sLS "${REQUEST_TOKEN_URL}&audience=uffizzi" -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $REQUEST_TOKEN")
       ./${{ inputs.binary-name }} login_by_identity_token --token "${OIDC_TOKEN}" --server "${UFFIZZI_SERVER}"
