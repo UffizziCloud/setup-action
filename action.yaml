@@ -20,7 +20,7 @@ runs:
   - shell: bash
     # Check if the input variable `action` is create
     run: |
-      export UFFIZZI_SERVER=app.uffizzi.com
+      export UFFIZZI_SERVER=https://app.uffizzi.com
       export REQUEST_TOKEN=${ACTIONS_ID_TOKEN_REQUEST_TOKEN}
       export REQUEST_TOKEN_URL=${ACTIONS_ID_TOKEN_REQUEST_URL}
 
