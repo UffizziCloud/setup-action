@@ -16,4 +16,11 @@ jobs:
     steps:
       - name: Call the action
         uses: UffizziCloud/setup-action@setup-binary
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      - shell: bash
+        run: |
+          ls
 
