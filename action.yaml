@@ -8,18 +8,22 @@ inputs:
   release-tag:
     description: 'Tag for the CLI release'
     required: true
-    default: 'v'
+    default: 'TEST-6'
   binary-name: 
     description: 'Name of the CLI binary'
     required: true
-    default: 'uffizzi-linux-x64-TEST-1'
+    default: 'uffizzi-linux-x86_64-TEST-6'
 
 runs:
   using: 'composite'
   steps:
   - shell: bash
-    # Check if the input variable `action` is create
     run: |
-      wget https://github.com/UffizziCloud/uffizzi_cli/releases/tag/${{ inputs.release-tag }}/${{ inputs.binary-name }}
+      wget https://github.com/UffizziCloud/uffizzi_cli/releases/download/${{ inputs.release-tag }}/${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
-      ./${{ inputs.binary-name }} login
+  - name: Export the binary
+    uses: actions/upload-artifact@v3
+    with:
+      name: my-artifact
+      path: ${{ inputs.binary-name }}
+
