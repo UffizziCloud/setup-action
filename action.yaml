@@ -28,4 +28,4 @@ runs:
       chmod +x ${{ inputs.binary-name }}
 
       OIDC_TOKEN=$(curl -sLS "${REQUEST_TOKEN_URL}&audience=uffizzi" -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $REQUEST_TOKEN")
-      ./${{ inputs.binary-name }} login_by_identity_token --token "${OIDC_TOKEN}" --access-token "${ACCESS_TOKEN}" --server "${UFFIZZI_SERVER}"
+      ./${{ inputs.binary-name }} login_by_identity_token --token "${OIDC_TOKEN}" --server "${UFFIZZI_SERVER}"
