@@ -17,10 +17,7 @@ inputs:
     description: 'Uffizzi Server URL'
     required: true
     default: 'https://app.uffizzi.com'
-  project:
-    description: 'Uffizzi Project name'
-    required: true
-    default: 'default'
+
 runs:
   using: 'composite'
   steps:
@@ -32,9 +29,6 @@ runs:
 
       wget https://github.com/UffizziCloud/uffizzi_cli/releases/download/${{ inputs.release-tag }}/${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
-
-      ./${{ inputs.binary-name }} config set project ${{ inputs.project }}
-      cat ~/.config/uffizzi/config_default.json 
 
       OIDC_TOKEN=$(curl -sLS "${REQUEST_TOKEN_URL}&audience=uffizzi" -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $REQUEST_TOKEN")
       ./${{ inputs.binary-name }} login_by_identity_token --token "${OIDC_TOKEN}" --server "${UFFIZZI_SERVER}"
