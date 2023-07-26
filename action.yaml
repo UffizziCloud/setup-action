@@ -8,11 +8,11 @@ inputs:
   release-tag:
     description: 'Tag for the CLI release'
     required: true
-    default: 'TEST-6'
+    default: 'TEST-23'
   binary-name: 
     description: 'Name of the CLI binary'
     required: true
-    default: 'uffizzi-linux-x86_64-TEST-6'
+    default: 'uffizzi-TEST-23-linux-x86_64'
 
 runs:
   using: 'composite'
