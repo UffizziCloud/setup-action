@@ -8,18 +8,18 @@ inputs:
   release-tag:
     description: 'Tag for the CLI release'
     required: true
-    default: 'v2.0.10'
+    default: 'latest'
   binary-name: 
     description: 'Name of the CLI binary'
     required: true
-    default: 'uffizzi-v2.0.10-linux-x86_64'
+    default: 'uffizzi-linux'
 
 runs:
   using: 'composite'
   steps:
   - shell: bash
     run: |
-      wget https://github.com/UffizziCloud/uffizzi_cli/releases/download/${{ inputs.release-tag }}/${{ inputs.binary-name }} --quiet
+      wget https://github.com/UffizziCloud/uffizzi_cli/releases/${{ inputs.release-tag }}/download/${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
   - name: Export the binary
     uses: actions/upload-artifact@v3
