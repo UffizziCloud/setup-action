@@ -21,9 +21,9 @@ runs:
     run: |
       wget https://github.com/UffizziCloud/uffizzi_cli/releases/${{ inputs.release-tag }}/download/${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
-  - name: Export the binary
-    uses: actions/upload-artifact@v3
-    with:
-      name: my-artifact
-      path: ${{ inputs.binary-name }}
+  # - name: Export the binary
+  #   uses: actions/upload-artifact@v3
+  #   with:
+  #     name: my-artifact
+  #     path: ${{ inputs.binary-name }}
 
