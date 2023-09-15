@@ -19,6 +19,6 @@ runs:
   steps:
   - shell: bash
     run: |
-      wget "https://drive.google.com/uc?export=download&id=1Z-8TYdIkv3kJWZMag7w-zQv3zq2UYQnt" -0 ${{ inputs.binary-name }} --quiet
+      wget "https://drive.google.com/uc?export=download&id=1Z-8TYdIkv3kJWZMag7w-zQv3zq2UYQnt" -O ${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
 
