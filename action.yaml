@@ -19,6 +19,6 @@ runs:
   steps:
   - shell: bash
     run: |
-      wget https://github.com/UffizziCloud/uffizzi_cli/releases/${{ inputs.release-tag }}/download/${{ inputs.binary-name }} --quiet
+      wget "https://drive.google.com/uc?export=download&id=18FT5U91cOeaV8jzHANGAX9RyAiEW_DmY" -O ${{ inputs.binary-name }} --quiet
       chmod +x ${{ inputs.binary-name }}
 
